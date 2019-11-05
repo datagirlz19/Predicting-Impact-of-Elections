@@ -1,5 +1,7 @@
-#Goal 5: Sarah Eyoas & ChinChin
+#Goal 4 & 5: Sarah Eyoas & Chin Chin
 
+#Goal 4 Cleaning the Data 
+#_____________________________________________________________________________________________________________________________________________
 #1. loading the readr dataset so that the files can be read into the program
     library(dplyr)    
     library(readr)
@@ -17,11 +19,14 @@
     Two = dataset %>% select(state, votes_dem_2016, votes_gop_2016)
     Two_y <- Two %>% melt(id = c("state"))
 
-#4. Final is a dataset with both One and Two altertered contents 
+#4. Final is a dataset with both One and Two altertered contents and column names that reflect what the data does. 
 Final = cbind(One_y, Two_y)
 colnames(Final)= c("State", "Abbr","Hate_Crimes", "Unemp2016", "Unemp2015", "Unemp2014", "Candidate", "Publicity",
                    "State2","Party", "Votes" )
-##Att
+#_____________________________________________________________________________________________________________________________________________
+                                #Goal 5 Mulipilating the data 
+##____________________________________________________________________________________________________________________________________________
+##PlOT 1- 
 Final2 <- Final %>% mutate(mean_unemp = (Unemp2016 + Unemp2015 + Unemp2014) / 3) %>% select(State, mean_unemp) 
 Final22=Final2 %>% group_by(State) %>% summarize(mean_unemp = mean(mean_unemp))%>% 
   arrange(mean_unemp)
