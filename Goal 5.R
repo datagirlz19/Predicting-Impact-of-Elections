@@ -1,6 +1,7 @@
 #Goal 5: Sarah Eyoas & ChinChin
 
 #1. loading the readr dataset so that the files can be read into the program
+    library(dplyr)    
     library(readr)
     dataset <- read_csv("~/Data Science Folder/dataset.csv")
 
