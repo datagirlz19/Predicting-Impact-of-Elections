@@ -1,16 +1,22 @@
 #Goal 5: Sarah Eyoas & ChinChin
 
-#loading the 
-library(readr)
-dataset <- read_csv("~/Data Science Folder/dataset.csv")
-One = dataset %>% select(state, state_abbr,hate_crimes_per_100k_splc,`Rates of 2016`, `Rates of 2015`, `Rates of 2014`,
+#1. loading the readr dataset so that the files can be read into the program
+    library(readr)
+    dataset <- read_csv("~/Data Science Folder/dataset.csv")
+
+#2. One is a dataset with informtion about the canidates, qty of hatecrimes, and he publicity each canidate recieved. 
+  #using the melt function we are trying to concatinate them into one colum (from "wide" to "long")
+    library(reshape2)
+    One = dataset %>% select(state, state_abbr,hate_crimes_per_100k_splc,`Rates of 2016`, `Rates of 2015`, `Rates of 2014`,
                          Clinton..2016., Trump..2016.)
-library(reshape2)
-One_y <- One %>% melt(id = c("state", "state_abbr","hate_crimes_per_100k_splc", 'Rates of 2016', 'Rates of 2015', 'Rates of 2014'))
+    One_y <- One %>% melt(id = c("state", "state_abbr","hate_crimes_per_100k_splc", 'Rates of 2016', 'Rates of 2015', 'Rates of 2014'))
 
-Two = dataset %>% select(state, votes_dem_2016, votes_gop_2016)
-Two_y <- Two %>% melt(id = c("state"))
+#3. Two is a dataset with information about the total votes for each party.
+  #using melt again we are trying to concatinate the data into one colum (from "wide" to "long")
+    Two = dataset %>% select(state, votes_dem_2016, votes_gop_2016)
+    Two_y <- Two %>% melt(id = c("state"))
 
+#4. Final is a dataset with both One and Two altertered contents 
 Final = cbind(One_y, Two_y)
 colnames(Final)= c("State", "Abbr","Hate_Crimes", "Unemp2016", "Unemp2015", "Unemp2014", "Candidate", "Publicity",
                    "State2","Party", "Votes" )
