@@ -27,7 +27,8 @@ colnames(Final)= c("State", "Abbr","Hate_Crimes", "Unemp2016", "Unemp2015", "Une
                                 #Goal 5 Mulipilating the data 
 ##____________________________________________________________________________________________________________________________________________
 ##PlOT 1- 
-Final2 <- Final %>% mutate(mean_unemp = (Unemp2016 + Unemp2015 + Unemp2014) / 3) %>% select(State, mean_unemp) 
+Rate= sum(6.2 + 5.9+ 4.9)
+Final2 <- Final %>% mutate(mean_unemp = (Unemp2016 + Unemp2015 + Unemp2014) / 3) %>% select(State, mean_unemp) %>% mutate(Above_AVE + mean_unemp > rate/3)
 Final22=Final2 %>% group_by(State) %>% summarize(mean_unemp = mean(mean_unemp))%>% 
   arrange(mean_unemp)
 ##
@@ -35,7 +36,8 @@ Final_V = Final[!is.na(Final$Votes),]
 Votes = Final_V %>% group_by(Party) %>% summarize(total_votes = sum(Votes))
 
 ##
-Publicity <- Final %>% group_by(Candidate) %>% summarise(Average_Publicity = mean(Publicity))
+Publicity <- Final %>% group_by(Candidate) %>% summarise(Average_Publicity = mean(Publicity)) 
+elections= Final_V %>% group_by(Candidate) %>% summarize(Average_Publicity = mean (Publicity), total votes= sum(Votes))
 library(ggplot2)
 ggplot(Publicity, aes(x = Candidate, y = Average_Publicity, fill = Candidate)) + geom_bar(stat = "identity")
 ##
