@@ -1,5 +1,7 @@
  RegisteredPartyVoters2k16.csv is from https://data.world/data-society/presidential-election-data/workspace/file?filename=votes.csv
- 
+ Unemployment data is from https://www.kaggle.com/jayrav13/unemployment-by-county-us
+ HateCrimes data is from https://www.kaggle.com/fivethirtyeight/fivethirtyeight-hate-crimes-dataset
+ Publicity Per Canidate data is taken from https://www.kaggle.com/wnyc/candidate-endorsements
  
  
  The topic of our project to "The impact of enviorment 
