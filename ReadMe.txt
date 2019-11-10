@@ -1,3 +1,7 @@
+ RegisteredPartyVoters2k16.csv is from https://data.world/data-society/presidential-election-data/workspace/file?filename=votes.csv
+ 
+ 
+ 
  The topic of our project to "The impact of enviorment 
 	(speifically news/publicity, hate crimes, and unemployment rates 
 	within states) and how it affects the voting parties. 
