@@ -5,6 +5,7 @@ options(scipen = 99)
 dataset=read.csv("dataset.csv")
 datasetc=dataset%>%mutate(ratioC=votes_dem_2016/(vote_dem_2016 + vote_gop_2016))
 datasetct=datasetc %>%mutate(ratioT=votes_gop_2016/(votes_dem_2016 + votes_gop_2016))
+head(datasetct)
 
 
 One=datasetct%>%select(state, state_abbr, hate_crimes_per_100k_splc, `Rates.of.2016`, `Rates.of.2015`, `Rates.of.2014`, `Clinton..2016.`, `Trump..2016.` )
@@ -20,6 +21,7 @@ colnames(Final)= c("State", "Abbr","Hate_Crimes", "Unemp2016", "Unemp2015", "Une
 Final=Final%>%mutate(Win = Votes > 0.5)
 Final_Win=Final%>%select(State, Abbr, Candidate, Publicity, Ratio, Votes, Win)
 Final_Win=na.omit(Final_Win)
+head(Final_Win)
 
 Final1= Final%>%group_by(Candidate, Win)%>%summarise(n())
 colnames(Final1)=c("Candidate", "Win", "No_of_states")
