@@ -3,7 +3,7 @@ library(readr)
 library(ggplot2)
 options(scipen = 99)
 dataset=read.csv("dataset.csv")
-datasetc=dataset%>%mutate(ratioC=votes_dem_2016/(vote_dem_2016 + vote_gop_2016))
+datasetc=dataset%>%mutate(ratioC=votes_dem_2016/(votes_dem_2016 + votes_gop_2016))
 datasetct=datasetc %>%mutate(ratioT=votes_gop_2016/(votes_dem_2016 + votes_gop_2016))
 head(datasetct)
 
