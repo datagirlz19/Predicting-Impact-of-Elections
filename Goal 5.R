@@ -101,4 +101,7 @@ Final3 <- Final %>% filter( Candidate == "Clinton..2016.")%>%select(Votes, Publi
     model4=lm(Votes~Publicity, data=Final3)
     summary(model4)
 
+#Using the Leave One Out Cross Validation to test predictions 
+data_crtl<-trainControl(method = 'LOOCV')
+model_caret<-train(Votes~Publicity, data=Final, trControl=data_crtl, method="lm", na.action = na.pass)
     
